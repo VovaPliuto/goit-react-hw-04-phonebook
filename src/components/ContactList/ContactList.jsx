@@ -2,18 +2,19 @@ import PropTypes from 'prop-types';
 
 import css from './ContactList.module.css';
 
-export const ContactList = ({ data, onContactDelete }) => {
+export const ContactList = ({ data, onContactDelete, filter }) => {
   
-  const createContactsMarkup = obj => {
+  const createContactsMarkup = ({
+    id, name, number}) => {
     return (
-      <li key={obj.id} className={css.listItem}>
+      <li key={id} className={css.listItem}>
         <span className={css.itemText}>
-          <b>{obj.name}:</b> <i>{obj.number}</i>
+          <b>{name}:</b> <i>{number}</i>
         </span>
         <button
           className={css.delBtn}
           type="button"
-          onClick={() => onContactDelete(obj.id)}
+          onClick={() => onContactDelete(id)}
         >
           Delete
         </button>
@@ -21,12 +22,12 @@ export const ContactList = ({ data, onContactDelete }) => {
     );
   };
 
-  if (data.filter) {
+  if (filter) {
     return (
       <ul className={css.contactsList}>
-        {data.contacts
+        {data
           .filter(({ name }) =>
-            name.toLowerCase().includes(data.filter.toLowerCase())
+            name.toLowerCase().includes(filter.toLowerCase())
           )
           .map(el => {
             return createContactsMarkup(el);
@@ -37,7 +38,7 @@ export const ContactList = ({ data, onContactDelete }) => {
 
   return (
     <ul className={css.contactsList}>
-      {data.contacts.map(el => {
+      {data.map(el => {
         return createContactsMarkup(el);
       })}
     </ul>
@@ -45,9 +46,7 @@ export const ContactList = ({ data, onContactDelete }) => {
 };
 
 ContactList.propTypes = {
-  data: PropTypes.shape({
-    contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
-    filter: PropTypes.string.isRequired,
-  }),
+  data: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
   onContactDelete: PropTypes.func.isRequired,
 };
