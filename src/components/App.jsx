@@ -22,7 +22,6 @@ export const App = () => {
     }
 
     setContacts(prevState => [...prevState, newContact]);
-    console.log(contacts);
   };
 
   const onContactDelete = contactId => {
