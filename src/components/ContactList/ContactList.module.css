@@ -1,0 +1,32 @@
+.contactsList {
+  margin: 0;
+  padding: 20px 2px;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  padding: 10px;
+  border: 1px dotted #3700dc;
+}
+
+.listItem + .listItem {
+  margin-top: 1px;
+}
+
+.itemText {
+  width: 250px;
+}
+
+.delBtn {
+  width: 60px;
+  margin-left: 20px;
+  border-radius: 8px;
+  border: 1px solid #fd7e7e;
+}
+
+.delBtn:active {
+  background-color: #fd7e7e;
+}

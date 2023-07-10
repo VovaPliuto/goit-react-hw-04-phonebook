@@ -1,0 +1,22 @@
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #000000;
+}
+
+input {
+  width: 200px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+button {
+  width: 100px;
+}
